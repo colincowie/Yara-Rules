@@ -3,7 +3,7 @@
    Author: Colin Cowie
    Date: 2018-08-04
    Identifier: Hidden Cobra
-   Reference: https://www.us-cert.gov/ncas/alerts/TA17-164A
+   Reference: https://www.us-cert.gov/HIDDEN-COBRA-North-Korean-Malicious-Cyber-Activity
 */
 
 /* Rule Set ----------------------------------------------------------------- */
@@ -19,6 +19,7 @@ rule HiddenCobra_Attachment {
       $s1 = "sharnon.kim@gmail.com" wide
       $s2 = "BIN0001.jpeg" wide
       $s3 = "BIN0002.PS" wide
+      $s4 = "Vladimir" wide
    condition:
-      all of them
+      $s1 or 3 of them
 }
