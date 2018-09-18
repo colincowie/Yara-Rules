@@ -30,6 +30,8 @@ rule XBash_Windows {
       hash.md5(0, filesize) == "3a3ae909caee915af927c29a6025d16c"
 }
 
+import "elf"
+
 rule XBash_Linux {
   meta:
      description = "Detects XBash Linux Malware"
@@ -37,8 +39,14 @@ rule XBash_Linux {
      reference = "https://researchcenter.paloaltonetworks.com/2018/09/unit42-xbash-combines-botnet-ransomware-coinmining-worm-targets-linux-windows/"
      date = "2018-09-18"
   strings:
-     $ip1 = "test"
+     $s1 = "Crypto.Cipher.DES"
+     $s2 = "pydata"
+     $s3 = "pymongo"
+     $s4 = "zout00-PYZ.pyz"
+     $s5 = "sXshell"
   condition:
-     any of them or
-     hash.md5(0, filesize) == ""
+     all of them and
+     elf.machine == elf.EM_X86_64 and
+     (filesize > 9MB or filesize < 12MB) or
+     hash.md5(0, filesize) == "7b5008d312465307905d96b4b8366326"
 }
