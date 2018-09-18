@@ -44,7 +44,7 @@ rule MenuPass_UPPERCUT {
      $c3 = "0x652CB1CEFF1C0A00" wide
      $c4 = "0x27595F1F74B55278" wide
      $c5 = "0xD290626C85FB1CE3" wide
-     $c6 = "0x409C7A89CFF0A727" wide 
+     $c6 = "0x409C7A89CFF0A727" wide
   condition:
      any of them or
      hash.md5(0, filesize) == "aa3f303c3319b14b4829fe2faa5999c1" or
